@@ -17,6 +17,10 @@ var Transfert = function(transfert){
     this.nom_beneficiaire      = transfert.nom_beneficiaire;
     this.tel      = transfert.tel;
     this.telben      = transfert.telben;
+    this.ville_prov      = transfert.ville_prov;
+    this.ville_des      = transfert.ville_des;
+  
+    
      
 };
 Transfert.create = function (newTransfert, result) {    
@@ -43,7 +47,21 @@ Transfert.findById = function (id, result) {
     });   
 };
 Transfert.findAll = function (result) {
-    dbConn.query("SELECT * from transfert", function (err, res) {
+    dbConn.query("SELECT * FROM transfert t , tarif f ,ville v", function (err, res) {
+        if(err) {
+            console.log("error: ", err);
+            result(null, err);
+        }
+        else{
+            console.log('transfert : ', res);  
+            result(null, res);
+        }
+    });   
+};
+
+
+Transfert.findAllAnJoin = function (result) {
+    dbConn.query("SELECT * FROM transfert t,ville v,tarif f WHERE t.idtarif=f.idtarif AND v.id=f.ville_prov AND v.id=f.ville_des  ", function (err, res) {
         if(err) {
             console.log("error: ", err);
             result(null, err);

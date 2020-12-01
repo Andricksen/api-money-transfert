@@ -12,7 +12,15 @@ exports.findAll = function(req, res) {
   });
 };
 
-
+exports.findAllAnJoin = function(req, res) {
+  Transfert.findAllAnJoin(function(err, transfert) {
+    console.log('controller fill all with join')
+    if (err)
+    res.send(err);
+    console.log('res', transfert);
+    res.send(transfert);
+  });
+};
 exports.create = function(req, res) {
     const new_tarif = new Transfert(req.body);
 

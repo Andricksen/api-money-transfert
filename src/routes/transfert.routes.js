@@ -4,7 +4,7 @@ const transfertController = require('../controllers/transfert.controller');
 
 // Retrieve all transfert
 router.get('/', transfertController.findAll);
-
+router.get('/all', transfertController.findAllAnJoin);
 // Create a new transfert
 router.post('/', transfertController.create);
 

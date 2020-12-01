@@ -33,7 +33,7 @@ Admin.findById = function (id, result) {
 };
 
 Admin.login = function (identify,password, result) {
-    dbConn.query("SELECT * FROM admin WHERE (name=? OR email=?) AND pwd=? ", identify,password, function (err, res) {             
+    dbConn.query("SELECT * FROM admin WHERE (name=? OR email=?) AND pwd=? ", [identify,identify,password], function (err, res) {             
         if(err) {
             console.log("error: ", err);
             result(err, null);

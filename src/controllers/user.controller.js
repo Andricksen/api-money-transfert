@@ -21,35 +21,10 @@ exports.create = function(req, res) {
         res.status(400).send({ error:true, message: 'Please provide all required field' });
     }else{
  
-mais oui cherche en attendant
-Jordan
-Jordan
-Photo
-1250$ :fire:
-Andrick
-
-mais oui cherche en attendant
-Jordan
-Jordan
-Photo
-1250$ :fire:
-Andrick
-dant
-            Jordan
-            Jordan
-            Photo
-            1250$ :fire:
-            Andrick
-
-mais oui cherche en attendant
-Jordan
-Jordan
-Photo
-1250$ :fire:
-Andrick
+        User.create(new_user, function(err,  new_users) {
             
             res.send(err);
-            res.json({error:false,message:"User added successfully!",data:user});
+            res.json({error:false,message:"User added successfully!",data:new_users});
         });
     }
 };

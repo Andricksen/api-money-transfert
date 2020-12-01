@@ -21,7 +21,7 @@ Tarif.create = function (newTarif, result) {
     });           
 };
 Tarif.findById = function (id, result) {
-    dbConn.query("SELECT * FROM tarif WHERE id = ? ", id, function (err, res) {             
+    dbConn.query("SELECT * FROM tarif WHERE idtarif = ? ", id, function (err, res) {             
         if(err) {
             console.log("error: ", err);
             result(err, null);
